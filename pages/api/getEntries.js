@@ -1,6 +1,6 @@
 import { table } from './utils/airtable.js';
 
-const handler = async (res, res) => {
+const handler = async (req, res) => {
   try {
     const records = await table.select().firstPage();
     console.log(records);
