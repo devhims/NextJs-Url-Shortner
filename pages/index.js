@@ -14,6 +14,7 @@ import {
   VStack,
   Link,
   Box,
+  Heading,
 } from '@chakra-ui/react';
 
 import { nanoid } from 'nanoid';
@@ -63,55 +64,53 @@ export default function Home({ allEntries }) {
 
   return (
     <>
-      <Flex align="center" justify="center">
-        <VStack
-          maxW={{ base: '90vw', md: '80vw', lg: '50vw' }}
-          w="100%"
-          mt={10}
-          spacing={5}
-          align="left"
-        >
-          <InputGroup size="md">
-            <Input
-              value={value}
-              onChange={handleChange}
-              placeholder="Paste the URL to shorted"
-            />
-            <Button onClick={handleSubmit}>Submit</Button>
-          </InputGroup>
-          {loading && (
-            <Center>
-              <CircularProgress isIndeterminate color="green.300" />
-            </Center>
-          )}
-          {!loading && newUrl && (
-            <Box>
-              <Text>
-                Original Url:{' '}
-                <Link color="teal.500" isExternal href={originalUrl}>
-                  {originalUrl}
-                </Link>
-              </Text>
-              <Text>
-                Shortened Url:{' '}
-                <Link color="teal.500" isExternal href={newUrl}>
-                  {newUrl}
-                </Link>
-              </Text>
-            </Box>
-          )}
-          {!loading && newUrl && originalUrl.length - newUrl.length > 0 && (
-            <Center>
-              <Text>
-                {`New url is ${
-                  originalUrl.length - newUrl.length
-                } characters shorter
+      <VStack mt={7} spacing={5} align="left">
+        <Center>
+          <Heading colorScheme="facebook">XSURL Shortner</Heading>
+        </Center>
+        <InputGroup size="md">
+          <Input
+            value={value}
+            onChange={handleChange}
+            placeholder="Paste the URL to shorten"
+            colorScheme="facebook"
+          />
+          <Button colorScheme="facebook" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </InputGroup>
+        {loading && (
+          <Center>
+            <CircularProgress isIndeterminate color="green.300" />
+          </Center>
+        )}
+        {!loading && newUrl && (
+          <Box>
+            <Text>
+              Original Url:{' '}
+              <Link color="teal.500" isExternal href={originalUrl}>
+                {originalUrl}
+              </Link>
+            </Text>
+            <Text>
+              Shortened Url:{' '}
+              <Link color="teal.500" isExternal href={newUrl}>
+                {newUrl}
+              </Link>
+            </Text>
+          </Box>
+        )}
+        {!loading && newUrl && originalUrl.length - newUrl.length > 0 && (
+          <Center>
+            <Text>
+              {`New url is ${
+                originalUrl.length - newUrl.length
+              } characters shorter
                 than the original url`}
-              </Text>
-            </Center>
-          )}
-        </VStack>
-      </Flex>
+            </Text>
+          </Center>
+        )}
+      </VStack>
     </>
   );
 }
