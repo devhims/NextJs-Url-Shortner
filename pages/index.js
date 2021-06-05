@@ -52,7 +52,7 @@ export default function Home({ allEntries }) {
       const newEntry = await res.json();
       console.log(newEntry);
       // router.replace(`/${newEntry.fields.uid}`);
-      setNewUrl('http://localhost:3000/' + newEntry.fields.uid);
+      setNewUrl('https://xsurl.vercel.app/' + newEntry.fields.uid);
       setValue('');
     } catch (err) {
       console.error(err);
