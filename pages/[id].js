@@ -5,6 +5,9 @@ import { getAllPaths, getEntryData } from '../pages/api/utils/airtable';
 
 const LinkPage = ({ entry }) => {
   const router = useRouter();
+  console.log(entry);
+
+  if (!entry) return null;
   const url = entry.post[0].fields.link;
 
   useEffect(() => {
