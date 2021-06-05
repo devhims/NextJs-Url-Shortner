@@ -1,9 +1,8 @@
 import { table } from './utils/airtable.js';
 
-const handler = (res, res) => {
+const handler = async (res, res) => {
   try {
-    const records = await table.select().firstPage(); //20 records
-    //const formattedRecords = minifyRecords(records);
+    const records = await table.select().firstPage();
     console.log(records);
     res.statusCode = 200;
     res.json(records);
