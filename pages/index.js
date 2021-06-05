@@ -15,6 +15,7 @@ import {
   Link,
   Box,
   Heading,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import { nanoid } from 'nanoid';
@@ -66,7 +67,14 @@ export default function Home({ allEntries }) {
     <>
       <VStack mt={7} spacing={5} align="left">
         <Center>
-          <Heading colorScheme="facebook">XSURL Shortner</Heading>
+          <Heading
+            fontSize="4xl"
+            bgClip="text"
+            colorScheme="facebook"
+            bgGradient="linear(to-r, blue.500,purple.500)"
+          >
+            XSURL Shortner
+          </Heading>
         </Center>
         <InputGroup size="md">
           <Input
@@ -74,6 +82,7 @@ export default function Home({ allEntries }) {
             onChange={handleChange}
             placeholder="Paste the URL to shorten"
             colorScheme="facebook"
+            bgColor={useColorModeValue('gray.50', 'gray.700')}
           />
           <Button colorScheme="facebook" onClick={handleSubmit}>
             Submit
